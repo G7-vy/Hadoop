@@ -9,6 +9,9 @@ hbase(main):003:0> create 'emp1', 'personaldata', 'professionaldata'
 0 row(s) in 1.4290 seconds
 
 => Hbase::Table - emp1
+#######################################################################################3
+create 'emp1',{NAME=>'personaldata',VERSIONS=>5},{NAME=>'professionaldata',VERSIONS=>5}
+##########################################################################################
 hbase(main):004:0> list
 TABLE                                                                                                                                                        
 emp1                                                                                                                                                         
