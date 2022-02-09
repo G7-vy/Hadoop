@@ -1,0 +1,25 @@
+
+---->Soop1 good health
+sudo -u hdfs hdfs dfsadmin -safemode leave
+sudo service mysqld start
+mysql -u root
+create database db218;
+show databases;
+use db218;
+create table pat218(id int,name char(10),disease char(10));
+create table doc218(id int,name char(10));
+insert into pat218 values(1,"Ajay","Dengue"),(2,"Akshay","Malaria"),(3,"Ram","Dengue"),(4,"Vinod","Dengue"),(5,"Harsh","Cold");
+insert into doc218 values(101,"Aman"),(102,"Akash"),(103,"Rakesh"),(104,"Vinu"),(105,"Harshitha");
+select * from pat218;
+select * from doc218;
+exit
+***************************2(1)***************************************
+     sqoop  import --connect  "jdbc:mysql://localhost/db218" --username root --table pat218 --where "disease=='Dengue'" --target-dir  /user/cloudera/out218b –m 1
+  hadoop fs -ls /user/cloudera/out218b
+  hadoop fs -ls /user/cloudera/out218b/part*
+  ******************************************2(2)**************************
+  
+  sqoop eval --connect "jdbc:mysql://localhost/db218" --username root --query "delete from doc218 where id>102"
+    sqoop eval --connect "jdbc:mysql://localhost/db218" --username root --query "select * doc218"
+    
+    -----------------> show part1 in browser.
