@@ -1,0 +1,11 @@
+sudo -u hdfs hdfs dfsadmin -safemode leave
+gedit ipl218
+(enter some text,save n close)
+cat ipl218
+hadoop fs -put ipl /user/cloudera
+hadoop fs -cat /user/cloudera/ipl218
+cd  /usr/lib/hadoop-0.20-mapreduce/
+ls
+hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar wordcount /user/cloudera/ipl218 /user/cloudera/out218a
+hadoop fs -ls /user/cloudera/out218a
+hadoop fs -cat /user/cloudera/out218a/part*
