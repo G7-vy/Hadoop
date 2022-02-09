@@ -1,0 +1,13 @@
+open new terminal.
+gedit afile
+{(enter_max_runs,enter_max_wickets),enter_team_lower case}
+save n close
+hadoop fs -put afile /user/cloudera
+close this of
+open ur old working terminal
+
+pig -x mapreduce
+
+h = load "/user/cloudera/afile" using PigStorage() as (line:chararray);
+dump h;
+after all mapreduce,down answer is output.Just show the output.
