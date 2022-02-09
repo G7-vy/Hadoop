@@ -2,7 +2,7 @@ sudo -u hdfs hdfs dfsadmin -safemode leave
 gedit ipl218
 (enter some text,save n close)
 cat ipl218
-hadoop fs -put ipl /user/cloudera
+hadoop fs -put ipl218 /user/cloudera
 hadoop fs -cat /user/cloudera/ipl218
 cd  /usr/lib/hadoop-0.20-mapreduce/
 ls
