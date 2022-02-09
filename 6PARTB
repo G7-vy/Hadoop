@@ -1,0 +1,22 @@
+(hbase-good health)
+sudo -u hdfs hdfs dfsadmin -safemode leave
+hbase shell
+create 'movie218',{NAME=>'personaldetail',VERSIONS=>5},{NAME=>'professionaldetail',VERSIONS=>5}
+list
+put 'movie218', 'row1', 'personaldetail:name', 'Shahrukh' 
+put 'movie218', 'row1', 'professionaldetail:filmType', 'romance' ..........compare value
+(similarly add rest all)
+scan 'movie218'
+**************(1)update salman to romance ,then action(check once with question)------------
+put 'movie218', 'row2', 'professionaldetail:filmType', 'romance' 
+get 'movie218','row2'
+put 'movie218', 'row2', 'professionaldetail:filmType', 'action' 
+get 'movie218','row2'
+------------------(2) all film types by salman--------------------
+get 'movie218','row2',{COLUMN=>'professionaldetail:filmType',VERSIONS=>3}
+--------------------(3) count of alia films--------------
+get 'movie218', 'row4', {COLUMN=>'professionaldetail:count_of_films'}     
+--------------------(4) delete akshay age--------
+delete 'movie218', 'row3', 'personaldetail:age'
+---------------------(5)delete actor in delhi and is now badshah---------------
+deleteall 'emp1','row1'
